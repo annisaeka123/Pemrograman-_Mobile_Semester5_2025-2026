@@ -13,6 +13,7 @@ NIM: 2341720131
 **Soal 1**
 
 output:
+
 <img width="794" height="629" alt="image" src="https://github.com/user-attachments/assets/2b713b2f-7d6a-498a-965f-bb3dea0f1e50" />
 
 **Soal 2**
@@ -36,14 +37,19 @@ Rangkumlah materi dari codelab ini menjadi poin-poin penting yang dapat Anda gun
 **Jawab:**
 
 Rangkuman Dart dalam 100 Detik
+
 a. Dart adalah bahasa pemrograman general-purpose yang type-safe, dikembangkan oleh Google pada tahun 2011.
+
 b. Awalnya ditujukan sebagai alternatif JavaScript, tapi tidak populer di komunitas web.
+
 c. Bangkit kembali setelah diadopsi oleh Flutter, kini menjadi salah satu bahasa paling disukai di industri.
+
 d. Keunggulan utama:
   - Bisa dikompilasi ke ARM/x64 machine code, JavaScript, dan self-contained executables.
   - Mendukung JIT (Just-in-Time) → produktif dengan hot reload.
   - Mendukung AOT (Ahead-of-Time) → performa tinggi di produksi.
   - Semua kode berjalan di dalam isolate → mendukung async dan parallel execution.
+    
 e. Fitur bahasa:
   - Type-safe: variabel sesuai tipe, minim runtime error.
   - Flexible typing: mendukung dynamic bila dibutuhkan.
@@ -51,6 +57,7 @@ e. Fitur bahasa:
   - Sintaks mirip Java + JavaScript.
   - Semua data adalah objek (kecuali null).
   - Mendukung paradigma functional programming & OOP dengan mixin-based inheritance.
+    
 f. Ekosistem:
   - Paket dikelola dengan Pub, tersedia ribuan paket open source.
 
