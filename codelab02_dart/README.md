@@ -7,6 +7,8 @@ Absen: 02
 NIM: 2341720131
 
 
+
+
 **Tugas Praktikum Pertemuan 2**
 
 
@@ -69,12 +71,27 @@ Buatlah penjelasan dan contoh eksekusi kode tentang perbedaan Null Safety dan La
 **Jawab:**
 
 - Null Safety
+  
   Definisi: Fitur yang mencegah variabel memiliki nilai null secara tidak sengaja.
+
   Dengan null safety, variabel harus diinisialisasi sebelum digunakan, kecuali diberi tanda ?.
+
   Membantu mencegah error umum seperti NullPointerException.
+  
+  Contoh:
+  
+  <img width="727" height="503" alt="image" src="https://github.com/user-attachments/assets/2d448d7a-0ee5-4f0d-8890-95c2cb22de36" />
+
 
 - Late Variable
+  
   Definisi: Variabel yang dideklarasikan tanpa nilai awal, tetapi kita berjanji akan menginisialisasinya sebelum dipakai.
+  
   Berguna saat nilai tidak bisa langsung ditentukan pada saat deklarasi, misalnya data dari API.
+  
+  Contoh:
+  
+  <img width="950" height="455" alt="image" src="https://github.com/user-attachments/assets/207d451a-9db8-4902-a7bd-49080c9ca34d" />
+
 
 
