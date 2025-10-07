@@ -75,3 +75,26 @@ Atur semua elemen dalam ListView, bukan Column, karena ListView mendukung scroll
 
 
 TUGAS PRAKTIKUM 1
+
+- Lay out a widget
+
+  1. Standard Apps
+
+     <img width="1919" height="1019" alt="image" src="https://github.com/user-attachments/assets/c1aec51c-5406-4c0e-a5e9-d86fb4a036e6" />
+
+  2. Material Apps
+
+     <img width="1919" height="1024" alt="image" src="https://github.com/user-attachments/assets/d7a3ee8c-5bdc-4805-a34c-5090cfae1cab" />
+
+
+- Lay out multiple widgets vertically and horizontally
+
+  <img width="1919" height="1021" alt="image" src="https://github.com/user-attachments/assets/2c188e6f-42ef-4c75-992e-e65161d18975" />
+
+
+- Common layout widgets
+
+  <img width="1919" height="1024" alt="image" src="https://github.com/user-attachments/assets/75516919-821d-4573-80c0-ee63d5261a0f" />
+
+  <img width="1919" height="1019" alt="image" src="https://github.com/user-attachments/assets/7955f9a3-b55f-483f-8dcd-9ba7914e961f" />
+
