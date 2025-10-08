@@ -98,3 +98,56 @@ TUGAS PRAKTIKUM 1
 
   <img width="1919" height="1019" alt="image" src="https://github.com/user-attachments/assets/7955f9a3-b55f-483f-8dcd-9ba7914e961f" />
 
+
+PRRAKTIKUM 5
+
+Langkah 1: Siapkan project baru
+
+Membuat sebuah project baru Flutter dengan nama belanja
+
+Langkah 2: Mendefinisikan Route
+
+Membuat dua buah file dart dengan nama home_page.dart dan item_page.dart pada folder pages.
+
+Langkah 3: Lengkapi Kode di main.dart
+
+Mendefinisikan Route
+
+Langkah 4: Membuat data model
+
+Membuat sebuah file dengan nama item.dart dan letakkan pada folder models
+
+Langkah 5: Lengkapi kode di class HomePage
+
+Pada halaman HomePage terdapat ListView widget. Sumber data ListView diambil dari model List dari object Item.
+
+Langkah 6: Membuat ListView dan itemBuilder
+
+Untuk menampilkan ListView pada praktikum ini digunakan itemBuilder. Data diambil dari definisi model yang telah dibuat sebelumnya. Untuk menunjukkan batas data satu dan berikutnya digunakan widget Card. 
+
+Langkah 7: Menambahkan aksi pada ListView
+
+Item pada ListView saat ini ketika ditekan masih belum memberikan aksi tertentu. Untuk menambahkan aksi pada ListView dapat digunakan widget InkWell atau GestureDetector. Perbedaan utamanya InkWell merupakan material widget yang memberikan efek ketika ditekan. Sedangkan GestureDetector bersifat umum dan bisa juga digunakan untuk gesture lain selain sentuhan. Pada praktikum ini akan digunakan widget InkWell.
+
+Untuk menambahkan sentuhan, letakkan cursor pada widget pembuka Card. Kemudian gunakan shortcut quick fix dari VSCode (Ctrl + . pada Windows atau Cmd + . pada MacOS). Sorot menu wrap with widget... Ubah nilai widget menjadi InkWell serta tambahkan named argument onTap yang berisi fungsi untuk berpindah ke halaman ItemPage.
+
+
+<img width="1919" height="1022" alt="image" src="https://github.com/user-attachments/assets/9fefd2a9-eeb1-4a83-bcad-5aae72bc2b7a" />
+
+
+TUGAS PRAKTIKUM 2
+
+- 1 dan 2
+
+  <img width="1919" height="1021" alt="image" src="https://github.com/user-attachments/assets/ecf74794-37da-40d8-8f5d-083ad9de91da" />
+
+  <img width="1919" height="1019" alt="image" src="https://github.com/user-attachments/assets/efeb1ee9-1930-451a-bbfb-bf2191821fa7" />
+
+
+- 3 sampai 5
+
+  <img width="1919" height="1022" alt="image" src="https://github.com/user-attachments/assets/59449607-5bcc-4056-a4dd-1fe3e57c154e" />
+
+  <img width="1915" height="1021" alt="image" src="https://github.com/user-attachments/assets/75e5afcb-2d84-4657-b24d-e2c72cfa33f5" />
+  
+
