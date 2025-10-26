@@ -32,9 +32,9 @@ Langkah 9: Menampilkan hasil foto
 
 <img width="1919" height="1022" alt="image" src="https://github.com/user-attachments/assets/ff8fa004-be65-479a-81c9-090e14c8b858" />
 
-<img src="codelab08_dart/img/praktikum1.gif" width="400" alt="Demo GIF">
+<img src="codelab08_dart/img/praktikum1.gif" width="400" alt="Demo GIF"> <br>
 
- ![alt text](<codelab08_dart/img/praktikum1.gif>) <br>
+ ![Demo GIF](https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab08_dart/img/praktikum1.gif)
 
  
 
@@ -55,7 +55,7 @@ Langkah 6: Implementasi filter carousel
 
 <img width="1919" height="1022" alt="image" src="https://github.com/user-attachments/assets/6dc2dd70-0026-470d-beee-d8adab1a8252" /> <br>
 
- ![alt text](<codelab08_dart/img/praktikum2.gif>) <br>
+ ![Demo GIF](https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab08_dart/img/praktikum2.gif)
 
 
 
@@ -69,7 +69,7 @@ TUGAS PRAKTIKUM
      <img width="1919" height="1017" alt="image" src="https://github.com/user-attachments/assets/1427cbdf-6720-4e6b-b375-864326a62c03" /> <br>
 
 
-     ![alt text](<codelab08_dart/img/tugas_praktikum.gif>) <br>
+      ![Demo GIF](https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab08_dart/img/tugas_praktikum.gif)
     
 
 3. Jelaskan maksud void async pada praktikum 1?
@@ -101,4 +101,5 @@ TUGAS PRAKTIKUM
      - Ketika kita menulis @override, artinya kita mengganti perilaku bawaan method initState() dengan kode kita sendiri.
        
      - Ini membantu compiler mengenali bahwa kita secara sadar ingin menimpa method yang sudah ada.
+
 
