@@ -1,12 +1,14 @@
+import 'package:flutter/material.dart';
 import '../models/data_layer.dart';
 import '../provider/plan_provider.dart';
-import 'package:flutter/material.dart';
 
 class PlanScreen extends StatefulWidget {
-  const PlanScreen({super.key});
+  final String planName;
+
+  const PlanScreen({super.key, required this.planName});
 
   @override
-  State createState() => _PlanScreenState();
+  State<PlanScreen> createState() => _PlanScreenState();
 }
 
 class _PlanScreenState extends State<PlanScreen> {
@@ -17,7 +19,7 @@ class _PlanScreenState extends State<PlanScreen> {
     super.initState();
     scrollController = ScrollController()
       ..addListener(() {
-        FocusScope.of(context).requestFocus(FocusNode());
+        FocusScope.of(context).unfocus(); // tutup keyboard saat scroll
       });
   }
 
@@ -29,28 +31,34 @@ class _PlanScreenState extends State<PlanScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final plansNotifier = PlanProvider.of(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Master Plan Ninis',
-          style: TextStyle(color: Colors.white),
-        ),
+        title: Text(widget.planName),
         backgroundColor: Colors.purple,
-        elevation: 3,
       ),
+      body: ValueListenableBuilder<List<Plan>>(
+        valueListenable: plansNotifier,
+        builder: (context, plans, _) {
+          // Coba ambil plan berdasarkan nama
+          final planIndex =
+              plans.indexWhere((p) => p.name == widget.planName);
 
-      // 🔹 Sekarang pakai ValueListenableBuilder untuk listen perubahan plan
-      body: ValueListenableBuilder<Plan>(
-        valueListenable: PlanProvider.of(context),
-        builder: (context, plan, child) {
+          if (planIndex == -1) {
+            return const Center(child: Text('Rencana tidak ditemukan.'));
+          }
+
+          final currentPlan = plans[planIndex];
+
           return Column(
             children: [
-              Expanded(child: _buildList(plan)),
+              Expanded(child: _buildList(currentPlan, planIndex, plansNotifier)),
               SafeArea(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    plan.completenessMessage,
+                    currentPlan.completenessMessage,
                     style: const TextStyle(
                       color: Colors.purple,
                       fontWeight: FontWeight.bold,
@@ -62,81 +70,86 @@ class _PlanScreenState extends State<PlanScreen> {
           );
         },
       ),
-
-      floatingActionButton: _buildAddTaskButton(context),
+      floatingActionButton: _buildAddTaskButton(plansNotifier),
     );
   }
 
-  // 🔹 Tombol tambah task, sudah pakai PlanProvider
-  Widget _buildAddTaskButton(BuildContext context) {
-    ValueNotifier<Plan> planNotifier = PlanProvider.of(context);
+  /// Tombol tambah tugas
+  Widget _buildAddTaskButton(ValueNotifier<List<Plan>> planNotifier) {
     return FloatingActionButton(
       backgroundColor: Colors.purple,
       child: const Icon(Icons.add, color: Colors.white),
       onPressed: () {
-        Plan currentPlan = planNotifier.value;
-        planNotifier.value = Plan(
-          name: currentPlan.name,
-          tasks: List<Task>.from(currentPlan.tasks)..add(const Task()),
-        );
+        final plans = planNotifier.value;
+        final planIndex =
+            plans.indexWhere((p) => p.name == widget.planName);
+
+        if (planIndex == -1) return;
+
+        final currentPlan = plans[planIndex];
+        final updatedTasks = List<Task>.from(currentPlan.tasks)
+          ..add(const Task(description: '', complete: false));
+
+        planNotifier.value = List<Plan>.from(plans)
+          ..[planIndex] = Plan(
+            name: currentPlan.name,
+            tasks: updatedTasks,
+          );
       },
     );
   }
 
-  // 🔹 ListView builder (tidak berubah tampilan)
-  Widget _buildList(Plan plan) {
+  /// Daftar tugas dalam plan
+  Widget _buildList(
+      Plan currentPlan, int planIndex, ValueNotifier<List<Plan>> planNotifier) {
     return ListView.builder(
       controller: scrollController,
-      keyboardDismissBehavior:
-          Theme.of(context).platform == TargetPlatform.iOS
-              ? ScrollViewKeyboardDismissBehavior.onDrag
-              : ScrollViewKeyboardDismissBehavior.manual,
-      itemCount: plan.tasks.length,
-      itemBuilder: (context, index) =>
-          _buildTaskTile(plan.tasks[index], index, context),
-    );
-  }
-
-  // 🔹 Item List tetap sama, hanya ganti jadi pakai provider
-  Widget _buildTaskTile(Task task, int index, BuildContext context) {
-    ValueNotifier<Plan> planNotifier = PlanProvider.of(context);
-    return ListTile(
-      leading: Checkbox(
-        activeColor: Colors.purple,
-        value: task.complete,
-        onChanged: (selected) {
-          Plan currentPlan = planNotifier.value;
-          planNotifier.value = Plan(
-            name: currentPlan.name,
-            tasks: List<Task>.from(currentPlan.tasks)
-              ..[index] = Task(
+      itemCount: currentPlan.tasks.length,
+      itemBuilder: (context, index) {
+        final task = currentPlan.tasks[index];
+        return ListTile(
+          leading: Checkbox(
+            activeColor: Colors.purple,
+            value: task.complete,
+            onChanged: (selected) {
+              final updatedTasks = List<Task>.from(currentPlan.tasks);
+              updatedTasks[index] = Task(
                 description: task.description,
                 complete: selected ?? false,
-              ),
-          );
-        },
-      ),
-      title: TextFormField(
-        initialValue: task.description,
-        cursorColor: Colors.purple,
-        decoration: const InputDecoration(
-          hintText: 'Deskripsi tugas...',
-          focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.purple, width: 2),
+              );
+
+              planNotifier.value = List<Plan>.from(planNotifier.value)
+                ..[planIndex] = Plan(
+                  name: currentPlan.name,
+                  tasks: updatedTasks,
+                );
+            },
           ),
-        ),
-        onChanged: (text) {
-          Plan currentPlan = planNotifier.value;
-          planNotifier.value = Plan(
-            name: currentPlan.name,
-            tasks: List<Task>.from(currentPlan.tasks)
-              ..[index] = Task(
+          title: TextFormField(
+            initialValue: task.description,
+            cursorColor: Colors.purple,
+            decoration: const InputDecoration(
+              hintText: 'Deskripsi tugas...',
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.purple, width: 2),
+              ),
+            ),
+            onChanged: (text) {
+              final updatedTasks = List<Task>.from(currentPlan.tasks);
+              updatedTasks[index] = Task(
                 description: text,
                 complete: task.complete,
-              ),
-          );
-        },
-      ),
+              );
+
+              planNotifier.value = List<Plan>.from(planNotifier.value)
+                ..[planIndex] = Plan(
+                  name: currentPlan.name,
+                  tasks: updatedTasks,
+                );
+            },
+          ),
+        );
+      },
     );
   }
 }
