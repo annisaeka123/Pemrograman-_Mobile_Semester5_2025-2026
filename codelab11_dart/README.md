@@ -1,4 +1,4 @@
-<img width="880" height="147" alt="image" src="https://github.com/user-attachments/assets/9ea243e7-bc7c-40e0-b3e3-c4ef6e98af06" />Nama: Annisa Eka Puspita
+Nama: Annisa Eka Puspita
 
 Kelas: TI-3H
 
@@ -219,4 +219,5 @@ Soal
     
 
 **PRAKTIKUM 6**: 
+
 
