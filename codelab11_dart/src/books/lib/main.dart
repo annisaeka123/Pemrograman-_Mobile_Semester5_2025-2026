@@ -47,13 +47,15 @@ class _FuturePageState extends State<FuturePage> {
             child: Text('GO!'),
             onPressed: () {
               // count();
-              getNumber().then((value) {
-                setState(() {
-                  result = value.toString();
-                });
-              }).catchError((e) {
-                result = 'An error occurred';
-              });
+              // getNumber().then((value) {
+              //   setState(() {
+              //     result = value.toString();
+              //   });
+              // }).catchError((e) {
+              //   result = 'An error occurred';
+              // });
+
+              returnFG();
             },
           ),
           const Spacer(),
@@ -106,23 +108,39 @@ class _FuturePageState extends State<FuturePage> {
     calculate2();
     return completer.future;
   }
-
   Future calculate() async {
     await Future.delayed(const Duration(seconds : 5));
     completer.complete(42);
   }
 
   calculate2() async {
-  try {
-    await new Future.delayed(const Duration(seconds : 5));
-    completer.complete(42);
+    try {
+      await new Future.delayed(const Duration(seconds : 5));
+      completer.complete(42);
 
-  // throw Exception();
+    // throw Exception();
+    }
+    catch (_) {
+      completer.completeError({});
+    }
   }
-  catch (_) {
-    completer.completeError({});
+
+  void returnFG() {
+    FutureGroup<int> futureGroup = FutureGroup<int>();
+    futureGroup.add(returnOneAsync());
+    futureGroup.add(returnTwoAsync());
+    futureGroup.add(returnThreeAsync());
+    futureGroup.close();
+    futureGroup.future.then((List <int> value) {
+      int total = 0;
+      for (var element in value) {
+        total += element;
+      }
+      setState(() {
+        result = total.toString();
+      });
+    });
   }
-}
 
 
 
