@@ -21,20 +21,44 @@ class _LocationScreenState extends State<LocationScreen> {
         myPosition = myPosition;
       });
     });
+    position = getPosition();
   }
 
   @override
   Widget build(BuildContext context) {
-    final myWidget = myPosition == ''
-      ? const CircularProgressIndicator()
-      : Text(myPosition);
-
     return Scaffold(
-      appBar: AppBar(title: const Text('Current Location - Ninis')),
-      // body: Center(child: Text(myPosition)),
-      body: Center(child: myWidget),
-    );
+      appBar: AppBar(title: Text('Current Location - Ninis')),
+      body: Center(child: FutureBuilder(
+        future: position,
+        builder: (BuildContext context, AsyncSnapshot<Position>
+            snapshot) {
+          if (snapshot.connectionState ==
+              ConnectionState.waiting) {
+            return const CircularProgressIndicator();
+          }
+          else if (snapshot.connectionState ==
+              ConnectionState.done) {
+            return Text(snapshot.data.toString());
+          }
+          else {
+            return const Text('');
+          }
+        },
+      ),
+    ));
   }
+
+  // Widget build(BuildContext context) {
+  //   final myWidget = myPosition == ''
+  //     ? const CircularProgressIndicator()
+  //     : Text(myPosition);
+
+  //   return Scaffold(
+  //     appBar: AppBar(title: const Text('Current Location - Ninis')),
+  //     // body: Center(child: Text(myPosition)),
+  //     body: Center(child: myWidget),
+  //   );
+  // }
 
   Future<Position> getPosition() async {
     await Geolocator.requestPermission();
@@ -44,4 +68,6 @@ class _LocationScreenState extends State<LocationScreen> {
       await Geolocator.getCurrentPosition();
     return position;
   }
+
+  Future<Position>? position;
 }
