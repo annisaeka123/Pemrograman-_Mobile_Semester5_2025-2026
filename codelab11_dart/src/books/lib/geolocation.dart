@@ -28,24 +28,28 @@ class _LocationScreenState extends State<LocationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Current Location - Ninis')),
-      body: Center(child: FutureBuilder(
-        future: position,
-        builder: (BuildContext context, AsyncSnapshot<Position>
-            snapshot) {
-          if (snapshot.connectionState ==
-              ConnectionState.waiting) {
-            return const CircularProgressIndicator();
-          }
-          else if (snapshot.connectionState ==
-              ConnectionState.done) {
-            return Text(snapshot.data.toString());
-          }
-          else {
-            return const Text('');
-          }
-        },
-      ),
-    ));
+      body: Center(
+        child: FutureBuilder(
+          future: position,
+          builder: (BuildContext context, AsyncSnapshot<Position>
+              snapshot) {
+            if (snapshot.connectionState ==
+                ConnectionState.waiting) {
+              return const CircularProgressIndicator();
+            }
+            else if (snapshot.connectionState == ConnectionState.done) {
+              if (snapshot.hasError) { // handling error
+                return Text('Something terrible happened!');
+              }
+              return Text(snapshot.data.toString());
+            }
+            else {
+              return const Text('');
+            }
+          },
+        ),
+      )
+    );
   }
 
   // Widget build(BuildContext context) {
@@ -63,7 +67,7 @@ class _LocationScreenState extends State<LocationScreen> {
   Future<Position> getPosition() async {
     await Geolocator.requestPermission();
     await Geolocator.isLocationServiceEnabled();
-    await Future.delayed(const Duration(seconds: 3)); // Simulate a delay
+    await Future.delayed(const Duration(seconds: 5)); // Simulate a delay
     Position? position = 
       await Geolocator.getCurrentPosition();
     return position;
