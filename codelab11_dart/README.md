@@ -218,6 +218,202 @@ Soal
     - Keduanya menghasilkan keluaran yang sama, tetapi pendekatan async/await (langkah 4) lebih direkomendasikan untuk proyek besar karena lebih rapi dan mudah dikelola.
     
 
-**PRAKTIKUM 6**: 
+**PRAKTIKUM 6**: Menggunakan Future dengan StatefulWidget
+
+Langkah 1: install plugin geolocator
+
+_flutter pub add geolocator_
+
+Langkah 2: Tambah permission GPS
+
+Langkah 3: Buat file geolocation.dart
+
+Langkah 4: Buat StatefulWidget. Buat class LocationScreen di dalam file geolocation.dart
+
+Langkah 5: Isi kode geolocation.dart
+
+Langkah 6: Edit main.dart
+
+_home: LocationScreen(),_
+
+Langkah 7: Run
+
+<img width="1919" height="1016" alt="image" src="https://github.com/user-attachments/assets/6ea47766-5d7e-49d0-aecb-c236fc29da2b" />
+
+
+Langkah 8: Tambahkan animasi loading
+
+
+Soal:
+
+11. Tambahkan nama panggilan pada tiap properti title sebagai identitas pekerjaan.
+
+    <img width="639" height="140" alt="image" src="https://github.com/user-attachments/assets/c9b08e53-f5ba-44cc-bb4b-4caf1939e7db" />
+
+
+12.
+    - Jika Anda tidak melihat animasi loading tampil, kemungkinan itu berjalan sangat cepat. Tambahkan delay pada method getPosition() dengan kode await Future.delayed(const Duration(seconds: 3));
+
+      <img width="721" height="217" alt="image" src="https://github.com/user-attachments/assets/6d7dac31-bc79-4324-b00d-2e8ab877d95a" />
+
+
+  - Apakah Anda mendapatkan koordinat GPS ketika run di browser? Mengapa demikian?
+
+    Tidak, koordinat GPS tidak akan muncul jika dijalankan di browser (Flutter Web).
+    Alasannya karena:
+
+    a. Plugin geolocator tidak mendukung browser secara penuh.
+      Browser tidak dapat mengakses sensor GPS internal perangkat.
+
+    b. Flutter Web berjalan di sandbox browser, yang membatasi akses ke hardware seperti GPS, kamera, atau sensor.
+
+    c. Jika dijalankan di emulator/HP Android, maka plugin dapat memanfaatkan service FusedLocationProvider dari sistem Android untuk mendapatkan koordinat asli.
+
+    Jadi, untuk mendapatkan hasil (latitude & longitude), jalankan di:
+
+    a. Emulator Android (bisa atur lokasi manual di setting emulator)
+
+    b. HP Android asli (pastikan GPS aktif dan izin diberikan)
+
+  - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit.
+
+
+
+**PRAKTIKUM 7** : Manajemen Future dengan FutureBuilder
+
+Langkah 1: Modifikasi method getPosition()
+
+Langkah 2: Tambah variabel di class _LocationScreenState
+
+Langkah 3: Tambah initState() dan set variabel position
+
+Langkah 4: Edit method build()
+
+Langkah 5: Tambah handling error
+
+
+Soal:
+
+13. Apakah ada perbedaan UI dengan praktikum sebelumnya? Mengapa demikian?
+Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit.
+
+    Secara tampilan akhir, UI terlihat hampir sama dengan praktikum sebelumnya. Pada kedua praktikum, aplikasi menampilkan animasi loading (CircularProgressIndicator) ketika data lokasi sedang diambil, lalu menampilkan koordinat lokasi (latitude dan longitude) setelah proses selesai.
+    
+    Namun, perbedaan utama terletak pada cara kerja di balik layar. Pada praktikum sebelumnya, proses pengambilan data dan pembaruan tampilan dilakukan secara manual menggunakan setState(). Artinya, developer harus memanggil setState() setiap kali data berubah agar UI diperbarui.
+    
+    Sedangkan pada praktikum ini digunakan FutureBuilder, yang secara otomatis mengelola state Future dan memperbarui tampilan berdasarkan statusnya (waiting, done, atau error). Dengan begitu, UI menjadi lebih efisien, reaktif, dan bersih, karena tidak perlu lagi memanggil setState() secara manual.
+    
+    Jika dilihat sekilas hasil tampilannya memang sama, tetapi FutureBuilder memberikan manajemen asynchronous yang lebih baik dan terstruktur.
+
+    
+
+14. Apakah ada perbedaan UI dengan langkah sebelumnya? Mengapa demikian?
+Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit.
+
+    Secara tampilan, tidak terdapat perbedaan yang signifikan dibandingkan langkah sebelumnya. UI tetap menampilkan animasi loading (CircularProgressIndicator) saat proses pengambilan lokasi berlangsung, dan menampilkan koordinat lokasi (latitude dan longitude) setelah proses selesai.
+
+    Perbedaannya baru terlihat jika terjadi error pada proses pengambilan data lokasi.
+    Pada langkah ini, karena telah ditambahkan error handling (snapshot.hasError), maka ketika terjadi kesalahan (misalnya GPS dimatikan atau izin lokasi ditolak), aplikasi akan menampilkan pesan “Something terrible happened!” di layar.
+    
+    Dengan demikian, meskipun tampilan normalnya sama seperti sebelumnya, aplikasi kini menjadi lebih tangguh dan informatif karena mampu memberikan umpan balik visual kepada pengguna saat terjadi error.
+
+
+
+**PRAKTIKUM 8** : Navigation route dengan Future Function
+
+Langkah 1: Buat file baru navigation_first.dart
+
+Langkah 2: Isi kode navigation_first.dart
+
+Langkah 3: Tambah method di class _NavigationFirstState
+
+Langkah 4: Buat file baru navigation_second.dart
+
+Langkah 5: Buat class NavigationSecond dengan StatefulWidget
+
+Langkah 6: Edit main.dart
+
+_home: const NavigationFirst(),_
+
+Langkah 7: Run
+
+<img width="1919" height="1023" alt="image" src="https://github.com/user-attachments/assets/5c8ded9e-ed53-4b3f-a2cc-939b36792d5d" />
+
+<img width="1919" height="1019" alt="image" src="https://github.com/user-attachments/assets/bd1744a2-8ce7-40e4-9e58-a599040b4985" />
+
+<img width="1919" height="1024" alt="image" src="https://github.com/user-attachments/assets/55851d33-767a-46f3-b2d3-5907018e7ddd" />
+
+
+
+Soal:
+
+15. Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
+Silakan ganti dengan warna tema favorit Anda.
+
+    <img width="596" height="143" alt="image" src="https://github.com/user-attachments/assets/4cc85b0e-bf11-4998-b388-e78824babc80" />
+
+
+16.
+    - Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
+
+      Ketika salah satu tombol warna diklik pada halaman kedua, aplikasi akan:
+
+      a. Menutup halaman kedua (Navigator.pop)
+      
+      b. Mengirimkan warna yang dipilih kembali ke halaman pertama.
+      
+      c. Warna background halaman pertama berubah sesuai warna yang dikembalikan.
+      
+      Hal ini terjadi karena fungsi Navigator.push() di halaman pertama bersifat asynchronous dan menunggu hasil dari halaman kedua menggunakan await.
+      Setelah Navigator.pop() dipanggil dengan nilai warna, nilai tersebut dikembalikan ke halaman pertama, lalu diproses dalam setState() untuk memperbarui tampilan.
+
+    - Gantilah 3 warna pada langkah 5 dengan warna favorit Anda!
+
+      <img width="1917" height="1022" alt="image" src="https://github.com/user-attachments/assets/8aa26e99-5878-493b-9089-8014e9ee6ca6" />
+
+    - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit
+
+
+
+**PRAKTIKUM 9** : Memanfaatkan async/await dengan Widget Dialog
+
+Langkah 1: Buat file baru navigation_dialog.dart
+
+Langkah 2: Isi kode navigation_dialog.dart
+
+Langkah 3: Tambah method async
+
+Langkah 4: Panggil method di ElevatedButton
+
+Langkah 5: Edit main.dart, Ubah properti home
+
+Langkah 6: Run
+
+<img width="1919" height="1020" alt="image" src="https://github.com/user-attachments/assets/d1e27593-c755-47b0-b719-a47d83da8cb7" />
+
+
+Soal:
+
+17. 
+    - Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian?
+      Warna background halaman utama berubah sesuai warna yang dipilih. Hal ini terjadi karena:
+
+      a. Fungsi _showColorDialog() adalah fungsi asynchronous (async) yang memanggil showDialog<Color>().
+
+      b. showDialog mengembalikan nilai warna (Color) melalui Navigator.pop(context, warna).
+
+      c. Setelah dialog ditutup, nilai warna tersebut dikembalikan ke variabel selectedColor.
+
+      d. setState() kemudian dipanggil untuk memperbarui state widget, sehingga warna latar belakang (backgroundColor) berubah sesuai dengan warna yang baru.
+
+      Dengan kata lain, await menunggu hasil dari dialog sebelum melanjutkan eksekusi — inilah manfaat async/await di Flutter, membuat alur eksekusi tampak sinkron, padahal tetap berjalan asynchronous.
+      
+    - Gantilah 3 warna pada langkah 3 dengan warna favorit Anda!
+      
+      <img width="1919" height="1020" alt="image" src="https://github.com/user-attachments/assets/f580cdec-0df9-4739-80c8-91a296822134" />
+
+    - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit.
+
+
 
 
