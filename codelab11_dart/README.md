@@ -36,14 +36,14 @@ Soal
 
 1. Tambahkan nama panggilan Anda pada title app sebagai identitas hasil pekerjaan Anda.
 
-  <img width="581" height="194" alt="image" src="https://github.com/user-attachments/assets/3f1635ae-d559-4fb8-9119-afaf9305d1f8" />
+  <img width="500" height="194" alt="image" src="https://github.com/user-attachments/assets/3f1635ae-d559-4fb8-9119-afaf9305d1f8" />
 
 
 2. Carilah judul buku favorit Anda di Google Books, lalu ganti ID buku pada variabel path di kode tersebut. Caranya ambil di URL browser Anda seperti gambar berikut ini.
 
-  <img width="843" height="155" alt="image" src="https://github.com/user-attachments/assets/9d980dac-11e5-44f7-a166-7cc6e42036d7" />
+  <img width="600" height="155" alt="image" src="https://github.com/user-attachments/assets/9d980dac-11e5-44f7-a166-7cc6e42036d7" />
 
-  <img width="959" height="1021" alt="image" src="https://github.com/user-attachments/assets/55c47904-5255-4107-9751-64c84ebe7c30" />
+  <img width="700" height="1021" alt="image" src="https://github.com/user-attachments/assets/55c47904-5255-4107-9751-64c84ebe7c30" />
 
 
 
@@ -70,6 +70,11 @@ Soal
 
   Artinya, jika terjadi error, variabel result akan diisi dengan pesan “An error occurred” dan setState() dipanggil untuk memperbarui tampilan agar pesan kesalahan tersebut langsung muncul di UI.
 
+  <img src="https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab11_dart/gif/soal3.gif?raw=true" width="700" alt="Demo Soal 3">
+
+
+
+
 **PRAKTIKUM 2** : Menggunakan await/async untuk menghindari callbacks
 
 Langkah 1: Buka file main.dart
@@ -88,7 +93,7 @@ Soal
 
 4. Jelaskan maksud kode langkah 1 dan 2 tersebut! Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
 
-
+<img src="https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab11_dart/gif/soal4.gif?raw=true" width="400" alt="Demo Soal 4">
 
 **PARKTIKUM 3** : Menggunakan Completer di Future
 
@@ -123,7 +128,7 @@ Soal
   
   Dengan pendekatan ini, developer punya kontrol penuh kapan dan bagaimana Future diselesaikan, bukan bergantung pada return async/await otomatis.
 
-
+  <img src="https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab11_dart/gif/soal5.gif?raw=true" width="400" alt="Demo Soal 5">
 
 6. Jelaskan maksud perbedaan kode langkah 2 dengan langkah 5-6 tersebut! Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit.
 
@@ -131,7 +136,7 @@ Soal
 
   - Langkah 5–6: memperkenalkan error handling dalam Future manual → completeError(error), memperluas konsep dengan menambahkan penanganan error, menunjukkan bagaimana Completer juga bisa menyelesaikan Future dengan error, serta bagaimana cara menangkapnya menggunakan .then() dan .catchError().
 
-
+<img src="https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab11_dart/gif/soal6.gif?raw=true" width="400" alt="Demo Soal 6">
 
 **PRAKTIKUM 4** : Memanggil Future secara paralel
 
@@ -152,7 +157,7 @@ Soal
 
 7. Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit.
 
-
+<img src="https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab11_dart/gif/soal7.gif?raw=true" width="400" alt="Demo Soal 7">
 
 8. Jelaskan maksud perbedaan kode langkah 1 dan 4!
    
@@ -174,7 +179,7 @@ Langkah 3: Run
 
 Pada bagian terminal akan melihat teks Complete seperti berikut.
 
-<img width="880" height="147" alt="image" src="https://github.com/user-attachments/assets/86efae34-b7cf-4168-8230-4bc47bef2a6c" />
+<img width="500" height="147" alt="image" src="https://github.com/user-attachments/assets/86efae34-b7cf-4168-8230-4bc47bef2a6c" />
 
 
 Langkah 4: Tambah method handleError()
@@ -185,7 +190,7 @@ Soal
 
 9. Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit.
 
-
+<img src="https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab11_dart/gif/soal9.gif?raw=true" width="400" alt="Demo Soal 9">
 
 10. Panggil method handleError() tersebut di ElevatedButton, lalu run. Apa hasilnya? Jelaskan perbedaan kode langkah 1 dan 4!
 
@@ -238,7 +243,7 @@ _home: LocationScreen(),_
 
 Langkah 7: Run
 
-<img width="1919" height="1016" alt="image" src="https://github.com/user-attachments/assets/6ea47766-5d7e-49d0-aecb-c236fc29da2b" />
+<img width="900" height="1016" alt="image" src="https://github.com/user-attachments/assets/6ea47766-5d7e-49d0-aecb-c236fc29da2b" />
 
 
 Langkah 8: Tambahkan animasi loading
@@ -248,13 +253,13 @@ Soal:
 
 11. Tambahkan nama panggilan pada tiap properti title sebagai identitas pekerjaan.
 
-    <img width="639" height="140" alt="image" src="https://github.com/user-attachments/assets/c9b08e53-f5ba-44cc-bb4b-4caf1939e7db" />
+    <img width="600" height="140" alt="image" src="https://github.com/user-attachments/assets/c9b08e53-f5ba-44cc-bb4b-4caf1939e7db" />
 
 
 12.
     - Jika Anda tidak melihat animasi loading tampil, kemungkinan itu berjalan sangat cepat. Tambahkan delay pada method getPosition() dengan kode await Future.delayed(const Duration(seconds: 3));
 
-      <img width="721" height="217" alt="image" src="https://github.com/user-attachments/assets/6d7dac31-bc79-4324-b00d-2e8ab877d95a" />
+      <img width="600" height="217" alt="image" src="https://github.com/user-attachments/assets/6d7dac31-bc79-4324-b00d-2e8ab877d95a" />
 
 
   - Apakah Anda mendapatkan koordinat GPS ketika run di browser? Mengapa demikian?
@@ -277,7 +282,7 @@ Soal:
 
   - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit.
 
-
+    <img src="https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab11_dart/gif/soal12.gif?raw=true" width="400" alt="Demo Soal 12">
 
 **PRAKTIKUM 7** : Manajemen Future dengan FutureBuilder
 
@@ -305,7 +310,7 @@ Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan co
     
     Jika dilihat sekilas hasil tampilannya memang sama, tetapi FutureBuilder memberikan manajemen asynchronous yang lebih baik dan terstruktur.
 
-    
+    <img src="https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab11_dart/gif/soal13.gif?raw=true" width="400" alt="Demo Soal 13">
 
 14. Apakah ada perbedaan UI dengan langkah sebelumnya? Mengapa demikian?
 Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit.
@@ -317,7 +322,7 @@ Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan co
     
     Dengan demikian, meskipun tampilan normalnya sama seperti sebelumnya, aplikasi kini menjadi lebih tangguh dan informatif karena mampu memberikan umpan balik visual kepada pengguna saat terjadi error.
 
-
+    <img src="https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab11_dart/gif/soal14.gif?raw=true" width="400" alt="Demo Soal 14">
 
 **PRAKTIKUM 8** : Navigation route dengan Future Function
 
@@ -337,11 +342,11 @@ _home: const NavigationFirst(),_
 
 Langkah 7: Run
 
-<img width="1919" height="1023" alt="image" src="https://github.com/user-attachments/assets/5c8ded9e-ed53-4b3f-a2cc-939b36792d5d" />
+<img width="800" height="1023" alt="image" src="https://github.com/user-attachments/assets/5c8ded9e-ed53-4b3f-a2cc-939b36792d5d" />
 
-<img width="1919" height="1019" alt="image" src="https://github.com/user-attachments/assets/bd1744a2-8ce7-40e4-9e58-a599040b4985" />
+<img width="800" height="1019" alt="image" src="https://github.com/user-attachments/assets/bd1744a2-8ce7-40e4-9e58-a599040b4985" />
 
-<img width="1919" height="1024" alt="image" src="https://github.com/user-attachments/assets/55851d33-767a-46f3-b2d3-5907018e7ddd" />
+<img width="800" height="1024" alt="image" src="https://github.com/user-attachments/assets/55851d33-767a-46f3-b2d3-5907018e7ddd" />
 
 
 
@@ -350,7 +355,7 @@ Soal:
 15. Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
 Silakan ganti dengan warna tema favorit Anda.
 
-    <img width="596" height="143" alt="image" src="https://github.com/user-attachments/assets/4cc85b0e-bf11-4998-b388-e78824babc80" />
+    <img width="500" height="143" alt="image" src="https://github.com/user-attachments/assets/4cc85b0e-bf11-4998-b388-e78824babc80" />
 
 
 16.
@@ -369,11 +374,11 @@ Silakan ganti dengan warna tema favorit Anda.
 
     - Gantilah 3 warna pada langkah 5 dengan warna favorit Anda!
 
-      <img width="1917" height="1022" alt="image" src="https://github.com/user-attachments/assets/8aa26e99-5878-493b-9089-8014e9ee6ca6" />
+      <img width="800" height="1022" alt="image" src="https://github.com/user-attachments/assets/8aa26e99-5878-493b-9089-8014e9ee6ca6" />
 
     - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit
 
-
+      <img src="https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab11_dart/gif/soal16.gif?raw=true" width="400" alt="Demo Soal 16">
 
 **PRAKTIKUM 9** : Memanfaatkan async/await dengan Widget Dialog
 
@@ -389,7 +394,7 @@ Langkah 5: Edit main.dart, Ubah properti home
 
 Langkah 6: Run
 
-<img width="1919" height="1020" alt="image" src="https://github.com/user-attachments/assets/d1e27593-c755-47b0-b719-a47d83da8cb7" />
+<img width="800" height="1020" alt="image" src="https://github.com/user-attachments/assets/d1e27593-c755-47b0-b719-a47d83da8cb7" />
 
 
 Soal:
@@ -410,10 +415,11 @@ Soal:
       
     - Gantilah 3 warna pada langkah 3 dengan warna favorit Anda!
       
-      <img width="1919" height="1020" alt="image" src="https://github.com/user-attachments/assets/f580cdec-0df9-4739-80c8-91a296822134" />
+      <img width="800" height="1020" alt="image" src="https://github.com/user-attachments/assets/f580cdec-0df9-4739-80c8-91a296822134" />
 
     - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit.
 
+      <img src="https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab11_dart/gif/soal17.gif?raw=true" width="400" alt="Demo Soal 17">
 
 
 
