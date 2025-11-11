@@ -70,7 +70,7 @@ Soal
 
   Artinya, jika terjadi error, variabel result akan diisi dengan pesan “An error occurred” dan setState() dipanggil untuk memperbarui tampilan agar pesan kesalahan tersebut langsung muncul di UI.
 
-  <img src="https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab11_dart/gif/soal3.gif?raw=true" width="700" alt="Demo Soal 3">
+  <img src="https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab11_dart/gif/soal3.gif?raw=true" width="800" alt="Demo Soal 3">
 
 
 
@@ -420,6 +420,7 @@ Soal:
     - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit.
 
       <img src="https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab11_dart/gif/soal17.gif?raw=true" width="400" alt="Demo Soal 17">
+
 
 
 
