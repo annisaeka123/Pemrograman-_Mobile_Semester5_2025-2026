@@ -65,7 +65,6 @@ class _StreamHomePageState extends State<StreamHomePage> {
     });
   }
 
-  // Langkah 8=================
   @override
   void initState() {
     numberStream = NumberStream();
@@ -77,8 +76,20 @@ class _StreamHomePageState extends State<StreamHomePage> {
       });
     });
     super.initState();
+
+    // Langkah 14=================
+    stream.listen((event) {
+      setState(() {
+        lastNumber = event;
+      });
+    }).onError((error) {
+      setState(() {
+        lastNumber = -1;
+      });
+    });
+    // ==========================
+
   }
-  // ==========================
 
   int lastNumber = 0;
   late StreamController numberStreamController;
@@ -90,11 +101,12 @@ class _StreamHomePageState extends State<StreamHomePage> {
     super.dispose();
   }
 
-  // Langkah 10=================
+  // Langkah 15=================
   void addRandomNumber() {
     Random random = Random();
-    int myNum = random.nextInt(10);
-    numberStream.addNumberToSink(myNum);
+    // int myNum = random.nextInt(10);
+    // numberStream.addNumberToSink(myNum);
+    numberStream.addError();
   }
   // ==========================
 
