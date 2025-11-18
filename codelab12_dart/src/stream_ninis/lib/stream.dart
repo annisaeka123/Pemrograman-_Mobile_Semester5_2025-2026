@@ -33,6 +33,8 @@ class NumberStream {
   addError() {
     controller.sink.addError('error');
   }
+
+  
   
 }
 
