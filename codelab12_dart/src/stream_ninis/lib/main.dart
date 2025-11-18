@@ -34,7 +34,7 @@ class _StreamHomePageState extends State<StreamHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Stream'),
+        title: const Text('Stream - Ninis'),
       ),
       body: SizedBox(
         width: double.infinity,
@@ -42,7 +42,7 @@ class _StreamHomePageState extends State<StreamHomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(lastNumber.toString()),
+            Text(values),
             ElevatedButton(
               onPressed: () => addRandomNumber(),
               child: Text('New Random Number'),
@@ -69,23 +69,21 @@ class _StreamHomePageState extends State<StreamHomePage> {
     });
   }
 
-  // Langkah 2 =================
   @override
   void initState() {
     numberStream = NumberStream();
     numberStreamController = numberStream.controller;
-    Stream stream = numberStreamController.stream;
+    Stream stream = numberStreamController.stream.asBroadcastStream();
+    // Stream stream = numberStreamController.stream;
     subscription = stream.listen((event) {
       setState(() {
-        lastNumber = event;
+        values += '$event - ';
       });
     });
-    super.initState();
-  // ===========================
 
-    subscription.onError((error) {
+    subscription2 = stream.listen((event) {
       setState(() {
-        lastNumber = -1;
+        values += '$event - ';
       });
     });
 
@@ -102,10 +100,9 @@ class _StreamHomePageState extends State<StreamHomePage> {
   void dispose() {
     numberStreamController.close();
     super.dispose();
-    subscription.cancel(); // Langkah 6 
+    subscription.cancel();
   }
 
-  // Langkah 8 =================
   void addRandomNumber() {
     Random random = Random();
     int myNum = random.nextInt(10);
@@ -117,7 +114,6 @@ class _StreamHomePageState extends State<StreamHomePage> {
       });
     }
   }
-  // ===========================
 
   late StreamTransformer transformer;
   late StreamSubscription subscription;
@@ -125,6 +121,9 @@ class _StreamHomePageState extends State<StreamHomePage> {
   void stopStream() {
     numberStreamController.close();
   }
+
+  late StreamSubscription subscription2;
+  String values = '';
 
 }
 
