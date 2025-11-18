@@ -77,7 +77,6 @@ class _StreamHomePageState extends State<StreamHomePage> {
     });
     super.initState();
 
-    // Langkah 14=================
     stream.listen((event) {
       setState(() {
         lastNumber = event;
@@ -87,7 +86,31 @@ class _StreamHomePageState extends State<StreamHomePage> {
         lastNumber = -1;
       });
     });
-    // ==========================
+
+    // Langkah 2=============
+    transformer = StreamTransformer<int, int>.fromHandlers(
+      handleData: (value, sink) {
+        sink.add(value * 10);
+      },
+      handleError: (error, trace, sink) {
+        sink.add(-1);
+      },
+      handleDone: (sink) => sink.close()
+    );
+    // =======================
+
+    // Langkah 3=============
+    stream.transform(transformer).listen((event) {
+      setState(() {
+        lastNumber = event;
+      });
+    }).onError((error) {
+      setState(() {
+        lastNumber = -1;
+      });
+    });
+    super.initState();
+    // ======================
 
   }
 
@@ -101,14 +124,16 @@ class _StreamHomePageState extends State<StreamHomePage> {
     super.dispose();
   }
 
-  // Langkah 15=================
   void addRandomNumber() {
     Random random = Random();
-    // int myNum = random.nextInt(10);
-    // numberStream.addNumberToSink(myNum);
-    numberStream.addError();
+    int myNum = random.nextInt(10);
+    numberStream.addNumberToSink(myNum);
+    // numberStream.addError();
   }
-  // ==========================
+
+  // Langkah 1  ===========
+  late StreamTransformer transformer;
+  // ======================
 
 }
 
