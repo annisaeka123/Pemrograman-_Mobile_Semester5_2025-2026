@@ -61,6 +61,8 @@ class _MyHomePageState extends State<MyHomePage> {
       myPizzas.add(myPizza);
     }
 
+    String json = convertToJSON(myPizzas);
+    debugPrint(json);
     return myPizzas;
   }
 
@@ -75,5 +77,11 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   List<Pizza> myPizzas = [];
+
+  String convertToJSON(List<Pizza> pizzas) {
+    return jsonEncode(pizzas.map((pizza) => jsonEncode(pizza)).toList());
+  }
+
+
   
 }
