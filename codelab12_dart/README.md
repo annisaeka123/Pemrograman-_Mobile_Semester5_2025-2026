@@ -54,7 +54,8 @@ Soal:
 
 3. 
    - Jelaskan fungsi keyword yield* pada kode tersebut!
-      yield* digunakan untuk mengalirkan (forwarding) seluruh nilai dari stream lain ke dalam stream yang sedang dibuat. Dengan kata lain, alih-alih mengembalikan satu nilai saja seperti yield, keyword yield* akan meneruskan seluruh event yang dihasilkan oleh stream lain secara otomatis.
+
+     yield* digunakan untuk mengalirkan (forwarding) seluruh nilai dari stream lain ke dalam stream yang sedang dibuat. Dengan kata lain, alih-alih mengembalikan satu nilai saja seperti yield, keyword yield* akan meneruskan seluruh event yang dihasilkan oleh stream lain secara otomatis.
 
       Pada kasus ini, yield* meneruskan semua event warna yang dihasilkan oleh Stream.periodic() sehingga stream getColorStream() akan memancarkan event yang sama dengan stream periodik tersebut.
      
@@ -75,7 +76,8 @@ Soal:
       f. yield* meneruskan seluruh aliran warna tersebut sebagai output stream getColorStream().
 
       Hasil akhirnya:
-      Stream akan memancarkan warna berurutan setiap 1 detik, lalu kembali ke warna pertama setelah sampai di warna terakhir.
+
+     Stream akan memancarkan warna berurutan setiap 1 detik, lalu kembali ke warna pertama setelah sampai di warna terakhir.
      
    - Lakukan commit hasil jawaban Soal 3 dengan pesan "W12: Jawaban Soal 3"
 
@@ -84,13 +86,16 @@ Soal:
      
    - Lakukan commit hasil jawaban Soal 4 dengan pesan "W12: Jawaban Soal 4"
 
+     <img src="https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab12_dart/gif/P1.gif?raw=true" width="400" alt="Demo Soal 4">
+
 5. 
    - Jelaskan perbedaan menggunakan listen dan await for (langkah 9) !
 
      a. await for
 
       Digunakan ketika kita ingin menunggu setiap event stream secara berurutan di dalam fungsi async.
-      Ciri–cirinya:
+
+     Ciri–cirinya:
       
       - Bersifat blocking secara lokal dalam method (method menunggu hingga stream selesai).
       
@@ -101,7 +106,8 @@ Soal:
       b. listen()
 
       Digunakan untuk mendaftarkan callback yang akan dipanggil setiap kali stream mengirim event.
-      Ciri–cirinya:
+
+     Ciri–cirinya:
       
       - Tidak menunggu stream selesai (non-blocking).
       
@@ -168,19 +174,23 @@ soal:
       
       e. Mengubah nilai UI ketika event diterima : Saat event masuk:
       
-        lastNumber = event;
+        _lastNumber = event;_
      
-        setState(() {});
+        _setState(() {});_
       
         sehingga angka terbaru langsung ditampilkan pada layar.
 
    - Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
-     
+
+      <img src="https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab12_dart/gif/P2.gif?raw=true" width="400" alt="Demo Soal 4">
+
    - Lalu lakukan commit dengan pesan "W12: Jawaban Soal 6".
 
-7. 
+6. 
    - Jelaskan maksud kode langkah 13 sampai 15 tersebut!
+
      a. Langkah 13 — Menambahkan method addError() dalam NumberStream
+
         Penjelasan:
 
         - Method ini digunakan untuk mengirim error ke stream, bukan mengirim data biasa.
@@ -190,7 +200,8 @@ soal:
         - Listener yang memiliki callback .onError() akan menangkap error tersebut.
 
       b. Langkah 14 — Menangkap Error dari Stream dengan onError()
-         Penjelasan:
+
+        Penjelasan:
 
         - Listener pertama untuk menerima event normal tetap ada (listen()).
       
@@ -203,6 +214,7 @@ soal:
         sehingga UI menampilkan nilai –1 sebagai tanda bahwa error muncul.
 
      c. Langkah 15 — Mengirim Error ke Stream
+     
         Penjelasan:
 
         - Kode untuk mengirim angka random sengaja di-comment.
@@ -271,7 +283,10 @@ soal:
         - Sekali untuk angka yang sudah diubah oleh transformer (×10)
 
    - Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
-     
+
+      <img src="https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab12_dart/gif/P3.gif?raw=true" width="400" alt="Demo Soal 4">
+
+
    - Lalu lakukan commit dengan pesan "W12: Jawaban Soal 8".
 
 
@@ -365,7 +380,9 @@ soal:
         3. Jika stream sudah ditutup, nilai di UI diubah menjadi -1 sebagai tanda error.
            
    - Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
-     
+
+      <img src="https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab12_dart/gif/P4.gif?raw=true" width="400" alt="Demo Soal 4">
+
    - Lalu lakukan commit dengan pesan "W12: Jawaban Soal 9".
 
 
@@ -410,6 +427,8 @@ soal:
       subscription2 = stream.listen(...);_
       
     - Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+
+      <img src="https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab12_dart/gif/P5.gif?raw=true" width="400" alt="Demo Soal 4">
       
     - Lalu lakukan commit dengan pesan "W12: Jawaban Soal 10,11".
 
@@ -451,7 +470,9 @@ soal:
       Pada langkah 7, widget StreamBuilder digunakan untuk membangun tampilan UI secara otomatis berdasarkan data terbaru yang dikirimkan oleh numberStream. StreamBuilder akan mendengarkan stream tersebut, kemudian setiap kali ada data baru (event) atau error, widget ini akan memanggil ulang fungsi builder() untuk memperbarui tampilan. Jika stream menghasilkan data (snapshot.hasData), data tersebut ditampilkan dalam teks berukuran besar di tengah layar. Jika terjadi error (snapshot.hasError), pesan error dapat ditangani sesuai kebutuhan. Dengan menggunakan StreamBuilder, UI akan selalu sinkron dengan data stream tanpa perlu memanggil setState() secara manual, sehingga memudahkan pembuatan UI yang reaktif terhadap perubahan data.
       
     - Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
-      
+
+      <img src="https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab12_dart/gif/P6.gif?raw=true" width="400" alt="Demo Soal 4">
+
     - Lalu lakukan commit dengan pesan "W12: Jawaban Soal 12".
 
 
@@ -504,8 +525,11 @@ soal:
       Konsep pola BLoC dalam praktikum ini dapat terlihat secara jelas pada file random_bloc.dart, di mana terdapat dua StreamController: satu sebagai input sink (generateRandom) dan satu sebagai output stream (randomNumber). Ketika tombol ditekan, UI mengirim event ke BLoC melalui sink, lalu BLoC memproses logika bisnis (membuat angka acak), kemudian hasilnya dikirim kembali ke UI lewat stream. Pada bagian UI, yaitu di random_screen.dart, digunakan StreamBuilder sebagai subscriber untuk mendengarkan perubahan data dari BLoC. Setiap kali stream mengirim nilai baru, UI akan otomatis diperbarui tanpa perlu logika tambahan. Inilah inti dari pola BLoC: memisahkan proses bisnis dari tampilan, melakukan komunikasi melalui event dan stream, serta menjaga agar UI hanya bertugas menampilkan data.
       
     - Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
-      
+
+      <img src="https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab12_dart/gif/P7.gif?raw=true" width="400" alt="Demo Soal 4">
+
     - Lalu lakukan commit dengan pesan "W12: Jawaban Soal 13".
+
 
 
 
