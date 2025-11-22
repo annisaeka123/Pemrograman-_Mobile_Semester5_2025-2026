@@ -4,6 +4,7 @@ import '../model/pizza.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,23 +41,63 @@ class _MyHomePageState extends State<MyHomePage> {
 
   late File myFile;
   String fileText = '';
+
+  final pwdController = TextEditingController();
+  String myPass = '';
+
+  final storage = const FlutterSecureStorage();
+  final myKey = 'myPass';
   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Path Provider - Ninis')),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Text('Doc path: $documentsPath'),
-          Text('Temp path $tempPath'),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            // Input
+            TextField(
+              controller: pwdController,
+              decoration: const InputDecoration(
+                hintText: 'Masukkan text...',
+              ),
+            ),
+            const SizedBox(height: 20),
 
-          ElevatedButton(
-            child: const Text('Read File'),
-            onPressed: () => readFile(),
-          ),
-          Text(fileText),
-        ],
+            // SAVE VALUE
+            ElevatedButton(
+              child: const Text('Save Value'),
+              onPressed: () async {
+                await writeToSecureStorage();
+              },
+            ),
+            const SizedBox(height: 10),
+
+            // READ VALUE
+            ElevatedButton(
+              child: const Text('Read Value'),
+              onPressed: () {
+                readFromSecureStorage().then((value) {
+                  setState(() {
+                    myPass = value;
+                  });
+                });
+              },
+            ),
+            const SizedBox(height: 20),
+
+            // TAMPILAN HASIL READ
+            Text(
+              myPass,
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -147,6 +188,15 @@ class _MyHomePageState extends State<MyHomePage> {
       // On error, return false.
       return false;
     }
+  }
+
+  Future writeToSecureStorage() async {
+    await storage.write(key: myKey, value: pwdController.text);
+  }
+
+  Future<String> readFromSecureStorage() async {
+    String secret = await storage.read(key: myKey) ?? '';
+    return secret;
   }
   
 }
