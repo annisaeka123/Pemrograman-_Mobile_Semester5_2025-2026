@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import '../httphelper.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,75 +50,41 @@ class _MyHomePageState extends State<MyHomePage> {
   final myKey = 'myPass';
   
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     return Scaffold(
-      appBar: AppBar(title: const Text('Path Provider - Ninis')),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            // Input
-            TextField(
-              controller: pwdController,
-              decoration: const InputDecoration(
-                hintText: 'Masukkan text...',
-              ),
-            ),
-            const SizedBox(height: 20),
-
-            // SAVE VALUE
-            ElevatedButton(
-              child: const Text('Save Value'),
-              onPressed: () async {
-                await writeToSecureStorage();
-              },
-            ),
-            const SizedBox(height: 10),
-
-            // READ VALUE
-            ElevatedButton(
-              child: const Text('Read Value'),
-              onPressed: () {
-                readFromSecureStorage().then((value) {
-                  setState(() {
-                    myPass = value;
-                  });
-                });
-              },
-            ),
-            const SizedBox(height: 20),
-
-            // TAMPILAN HASIL READ
-            Text(
-              myPass,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 255, 176, 234), 
+        title: const Text('JSON - Ninis')
       ),
-    );
+      body: FutureBuilder(
+          future: callPizzas(),
+          builder: (BuildContext context, AsyncSnapshot<List<Pizza>> snapshot) {
+          if (snapshot.hasError) {
+            return const Text('Something went wrong');
+          }
+          if (!snapshot.hasData) {
+            return const CircularProgressIndicator();
+          }
+            return ListView.builder(
+              itemCount: (snapshot.data == null) ? 0 : snapshot.data!.length,
+              itemBuilder: (BuildContext context, int position) {
+                return ListTile(
+                  title: Text(snapshot.data![position].pizzaName),
+                  subtitle: Text(snapshot.data![position].description + ' - € ' + 
+                    snapshot.data![position].price.toString()),
+                );
+              }
+            );
+          }
+      ),
+    );  
   }
 
-  Future<List<Pizza>> readJsonFile() async {
-    String myString = await DefaultAssetBundle.of(context)
-        .loadString('assets/pizzalist.json');
-
-    List pizzaMapList = jsonDecode(myString);
-
-    List<Pizza> myPizzas = [];
-    for (var pizza in pizzaMapList) {
-      Pizza myPizza = Pizza.fromJson(pizza);
-      myPizzas.add(myPizza);
-    }
-
-    String json = convertToJSON(myPizzas);
-    debugPrint(json);
-    return myPizzas;
-  }
+  Future<List<Pizza>> callPizzas() async {
+    HttpHelper helper = HttpHelper(); 
+    List<Pizza> pizzas = await helper.getPizzaList(); 
+    return pizzas; 
+  } 
 
   @override
   void initState() {
