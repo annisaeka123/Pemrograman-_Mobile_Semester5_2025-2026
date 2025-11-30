@@ -3,9 +3,16 @@ import 'model/pizza.dart';
 import 'httphelper.dart';
 
 class PizzaDetailScreen extends StatefulWidget {
-  const PizzaDetailScreen({super.key});
+
+  final Pizza pizza;
+  final bool isNew;
+  const PizzaDetailScreen(
+      {super.key, required this.pizza, required this.isNew});
+
   @override
   State<PizzaDetailScreen> createState() => _PizzaDetailScreenState();
+
+  
 }
 
 class _PizzaDetailScreenState extends State<PizzaDetailScreen> {
@@ -82,8 +89,25 @@ class _PizzaDetailScreenState extends State<PizzaDetailScreen> {
               ),
               ElevatedButton(
                   child: const Text('Send Post'),
-                  onPressed: () {
-                    postPizza();
+                  onPressed: () async {
+                    HttpHelper helper = HttpHelper();
+
+                    Pizza pizza = Pizza(
+                      id: int.tryParse(txtId.text) ?? 0,
+                      pizzaName: txtName.text,
+                      description: txtDescription.text,
+                      price: double.tryParse(txtPrice.text) ?? 0,
+                      imageUrl: txtImageUrl.text,
+                      rating: double.tryParse(txtRating.text) ?? 0,
+                    );
+
+                    final result = await (widget.isNew
+                        ? helper.postPizza(pizza)
+                        : helper.putPizza(pizza));
+
+                    setState(() {
+                      operationResult = result.isEmpty ? "Success" : result;
+                    });
                   })      
             ]),
         )
@@ -117,5 +141,17 @@ class _PizzaDetailScreenState extends State<PizzaDetailScreen> {
     setState(() {
       operationResult = result;
     });
+  }
+
+  @override
+  void initState() {
+    if (!widget.isNew) {
+      txtId.text = widget.pizza.id.toString();
+      txtName.text = widget.pizza.pizzaName;
+      txtDescription.text = widget.pizza.description;
+      txtPrice.text = widget.pizza.price.toString();
+      txtImageUrl.text = widget.pizza.imageUrl;
+    }
+    super.initState();
   }
 }

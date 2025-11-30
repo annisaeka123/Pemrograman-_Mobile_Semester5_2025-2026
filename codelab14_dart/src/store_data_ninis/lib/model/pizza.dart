@@ -13,14 +13,14 @@ class Pizza {
   final String imageUrl;
   final double rating;
 
-    Pizza({
-      required this.id,
-      required this.pizzaName,
-      required this.description,
-      required this.price,
-      required this.imageUrl,
-      required this.rating,
-    });
+  Pizza({
+    this.id = 0,
+    this.pizzaName = '',
+    this.description = '',
+    this.price = 0,
+    this.imageUrl = '',
+    this.rating = 0,
+  });
 
   Pizza.fromJson(Map<String, dynamic> json)
     : id = int.tryParse(json[keyId].toString()) ?? 0,
