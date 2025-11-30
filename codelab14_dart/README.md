@@ -175,7 +175,14 @@ Soal 3
 
 - Ubah salah satu data dengan Nama dan NIM Anda, lalu perhatikan hasilnya di Wiremock.
 
+  <img width="978" height="864" alt="image" src="https://github.com/user-attachments/assets/a6b44abc-673c-4c70-8d55-e9ee6e6b70d4" />
+
+  Berdasarkan hasil request yang dilakukan melalui aplikasi, dapat dilihat bahwa metode HTTP PUT pada endpoint /pizza berhasil dikirim ke server Wiremock dengan format JSON yang benar. Request tersebut memiliki header penting seperti Content-Type: application/json dan Accept: application/json, sehingga dapat dikenali dan dicocokkan dengan stub yang telah dikonfigurasi di Wiremock. Hal ini berbeda dari request sebelumnya yang gagal karena header tidak sesuai. Pada hasil akhir, Wiremock berhasil melakukan pencocokan (matched stub) dengan stub bernama "Put Pizza", dan server memberikan response dengan status 200 OK serta pesan "Pizza was updated". Ini menunjukkan bahwa konfigurasi API dan format request sudah sesuai dan dapat diterima oleh server Wiremock.
+
+
 - Capture hasil aplikasi Anda berupa GIF di README dan lakukan commit hasil jawaban Soal 3 dengan pesan "W14: Jawaban Soal 3"
+
+   <img src="https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab14_dart/gif/P3_soal3.gif?raw=true" width="400" alt="Soal 3">
 
 
 --------
@@ -210,5 +217,6 @@ Soal 4
 
 Capture hasil aplikasi Anda berupa GIF di README dan lakukan commit hasil jawaban Soal 4 dengan pesan "W14: Jawaban Soal 4"
 
+ <img src="https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab14_dart/gif/P4_soal4.gif?raw=true" width="400" alt="Soal 4">
 
 
