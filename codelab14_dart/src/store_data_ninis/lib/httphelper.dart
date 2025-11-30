@@ -6,6 +6,13 @@ import '../model/pizza.dart';
 class HttpHelper {
   final String authority = '9ydk8.wiremockapi.cloud';
   final String path = 'pizzalist';
+
+  static final HttpHelper _httpHelper = HttpHelper._internal();
+  HttpHelper._internal();
+  factory HttpHelper() {
+    return _httpHelper;
+  }
+
   Future<List<Pizza>> getPizzaList() async {
     final Uri url = Uri.https(authority, path);
     final http.Response result = await http.get(url);
