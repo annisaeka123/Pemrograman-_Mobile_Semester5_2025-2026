@@ -30,11 +30,19 @@ NIM : 2341720131
    
 7. Di file httphelper.dart, tambahkan kode
 
+    <img width="500" height="493" alt="image" src="https://github.com/user-attachments/assets/2514d001-2329-4bd8-8504-9b5fc79d1622" />
+
+
 8. Di file main.dart, di kelas _MyHomePageState, tambahkan metode bernama callPizzas. Ini mengembalikan Future dari List objek Pizza dengan memanggil metode getPizzaList dari kelas HttpHelper.
 
 9. Di metode build dari kelas _MyHomePageState, di body Scaffold, tambahkan FutureBuilder yang membangun ListView dari widget ListTile yang berisi objek Pizza.
 
+    <img width="500" height="717" alt="image" src="https://github.com/user-attachments/assets/e6d1cbac-2de7-4f6e-ac9b-44e4fd70ced4" />
+
+
 10. Jalankan aplikasi.
+
+    <img width="900" height="1019" alt="image" src="https://github.com/user-attachments/assets/6c0c3eb1-5532-41ca-ae2e-ad91c6a8fdb9" />
 
 
 Gambar tersebut merupakan tangkapan layar dari daftar item yang diambil melalui HTTP, menampilkan ListView dengan nama pizza dan deskripsinya.
@@ -45,6 +53,9 @@ Gambar tersebut merupakan tangkapan layar dari daftar item yang diambil melalui 
     Salah satu cara untuk menghindari ini adalah dengan menggunakan konstruktor factory dan pola singleton: ini memastikan Anda hanya menginstansiasi kelas sekali. Ini berguna setiap kali hanya satu objek yang diperlukan di aplikasi Anda dan ketika Anda perlu mengakses sumber daya yang ingin Anda bagikan di seluruh aplikasi.
 
     Di file httphelper.dart, tambahkan kode ke kelas HttpHelper.
+
+    <img width="500" height="126" alt="image" src="https://github.com/user-attachments/assets/fcc1d838-40db-4070-9a80-4577ffdc0ea0" />
+
 
 
 **Soal**
@@ -102,14 +113,23 @@ Untuk melakukan aksi POST pada layanan web, ikuti langkah-langkah berikut:
 
 16. Tambahkan detail pizza di field teks dan tekan tombol Send Post. Anda seharusnya melihat hasil yang sukses
 
+    <img width="1919" height="965" alt="image" src="https://github.com/user-attachments/assets/8fe349d0-ccd7-434f-813c-61bca0ffc455" />
+
 
 **Soal**
 
 Soal 2
 
-Tambahkan field baru dalam JSON maupun POST ke Wiremock!
+- Tambahkan field baru dalam JSON maupun POST ke Wiremock!
 
-Capture hasil aplikasi Anda berupa GIF di README dan lakukan commit hasil jawaban Soal 2 dengan pesan "W14: Jawaban Soal 2"
+  <img width="350" height="578" alt="image" src="https://github.com/user-attachments/assets/f2bda265-4ff2-41d9-a43a-ecf896a54d75" />
+
+  <img width="570" height="506" alt="image" src="https://github.com/user-attachments/assets/fde0a57d-7ea5-40a5-9378-1621dc7fb54c" />
+
+
+- Capture hasil aplikasi Anda berupa GIF di README dan lakukan commit hasil jawaban Soal 2 dengan pesan "W14: Jawaban Soal 2"
+
+  <img src="https://github.com/annisaeka123/Pemrograman-_Mobile_Semester5_2025-2026/blob/main/codelab14_dart/gif/P2_soal2.gif?raw=true" width="400" alt="Soal 2">
 
 
 ---------
@@ -189,5 +209,6 @@ Untuk melakukan aksi DELETE pada layanan web, ikuti langkah-langkah berikut:
 Soal 4
 
 Capture hasil aplikasi Anda berupa GIF di README dan lakukan commit hasil jawaban Soal 4 dengan pesan "W14: Jawaban Soal 4"
+
 
 
