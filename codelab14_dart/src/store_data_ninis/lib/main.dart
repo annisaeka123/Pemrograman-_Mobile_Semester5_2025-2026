@@ -73,14 +73,35 @@ class _MyHomePageState extends State<MyHomePage> {
             itemCount: pizzas.length,
             itemBuilder: (context, index) {
               final pizza = pizzas[index];
-              return ListTile(
-                title: Text(pizza.pizzaName),
-                subtitle: Text("${pizza.description} - € ${pizza.price}"),
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => PizzaDetailScreen(pizza: pizza, isNew: false),
-                  ),
+              return Dismissible(
+                key: Key(pizza.id.toString()),
+                direction: DismissDirection.endToStart,
+                background: Container(
+                  color: Colors.red,
+                  alignment: Alignment.centerRight,
+                  padding: const EdgeInsets.only(right: 20),
+                  child: const Icon(Icons.delete, color: Colors.white),
+                ),
+                onDismissed: (direction) async {
+                  final helper = HttpHelper();
+
+                  setState(() {
+                    pizzas.removeWhere((item) => item.id == pizza.id);
+                  });
+
+                  await helper.deletePizza(pizza.id!);
+                },
+                child: ListTile(
+                  title: Text(pizza.pizzaName),
+                  subtitle: Text("${pizza.description} - € ${pizza.price}"),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PizzaDetailScreen(pizza: pizza, isNew: false),
+                      ),
+                    );
+                  },
                 ),
               );
             },
